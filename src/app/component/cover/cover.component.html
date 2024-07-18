@@ -1,9 +1,12 @@
+
 <div class="flex justify-center items-center lg:h-[80vh] h-[65vh]  bg-[#07070b]">
-    <div class="m-8 mb-0 lg:w-[400px] lg:max-w-full w-[300px]">
+    <div class="m-8 mb-0 lg:w-[400px] lg:max-w-full relative w-[300px]">
+      
+      <p class="text-white text-opacity-60 rounded-t-xl  absolute w-full flex bg-gray-500 rounded-sm bg-opacity-25  justify-center">Trending</p>
       <img
-        [src]="getImageUrl(cover.poster_path)"
-        class="rounded-2xl"
-      />
+      [src]="getImageUrl(cover.poster_path)"
+      class="rounded-2xl"
+      >
       <div>
         <p class="text-white text-center p-2">
           {{
