@@ -13,7 +13,7 @@
 <div class="no-scrollbar flex overflow-x-auto">
   <app-movie
     *ngFor="let movies of upcomingMovies"
-    [movies]="movies"
+    [movies]="movies" (click)="handleClick(movies)"
   ></app-movie>
 </div>
 <h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
@@ -22,7 +22,7 @@
 <div class="no-scrollbar flex overflow-x-auto">
   <app-movie
     *ngFor="let series of upcomingSeries"
-    [movies]="series"
+    [movies]="series" (click)="handleClick(series)"
   ></app-movie>
 </div>
 <p

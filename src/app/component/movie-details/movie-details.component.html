@@ -1,0 +1,21 @@
+<div class="px-12 pt-8">
+  <img
+    [src]="getImageUrl(movieDetails?.poster_path || '')"
+    class="h-[600px] w-screen object-center object-cover mt-4 rounded-2xl"
+    height="200px"
+  />
+  <div class="flex flex-wrap gap-4 mt-4 text-white px-2">
+  <p *ngFor="let genre of movieDetails?.genres" class="flex">{{genre.name}}</p>
+  </div>
+  <div class="flex-col lg:flex lg:flex-row text-white items-center justify-between mt-4">
+    <h1 class="text-3xl p-2 text-white">{{ movieDetails?.title }}</h1>
+    <div class="text-sm font-mono flex lg:flex-col p-2 lg:p-0">
+      <p class="text-yellow-200">Popularity: {{ movieDetails?.popularity }}</p>
+      <p>Release: {{ movieDetails?.release_date }}</p>
+    </div>
+  </div>
+  <div class="text-white p-2">
+    <p class="text-sm">{{ movieDetails?.tagline }}</p>
+    <p>{{ movieDetails?.overview }}</p>
+  </div>
+</div>
