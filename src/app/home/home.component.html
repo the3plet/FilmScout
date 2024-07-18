@@ -1,4 +1,34 @@
-<h1 class="text-white flex justify-center text-3xl font-h1-main">Most Popular of the Day</h1>
-<div class=" p-10 pt-0 flex flex-wrap justify-center">
-    <app-movie *ngFor="let movies of listOfMovies" [movies]="movies" class=""></app-movie>
+<!-- <h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
+  Most Popular of the Day
+</h1> -->
+<div class="no-scrollbar flex overflow-x-auto">
+  <app-cover
+    *ngFor="let cover of listOfMovies"
+    [cover]="cover"
+    class=""
+    (click)="handleClick(cover)"
+  ></app-cover>
 </div>
+<h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
+    Upcoming Movies
+  </h1>
+<div class="no-scrollbar flex overflow-x-auto">
+  <app-movie
+    *ngFor="let movies of upcomingMovies"
+    [movies]="movies"
+  ></app-movie>
+</div>
+<h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
+    Series Airing Today
+  </h1>
+<div class="no-scrollbar flex overflow-x-auto">
+  <app-movie
+    *ngFor="let series of upcomingSeries"
+    [movies]="series"
+  ></app-movie>
+</div>
+<p
+  class="lg:flex hidden text-white justify-center opacity-45 font-mono text-sm"
+>
+  use shift + scroll to scroll through the list of movies
+</p>

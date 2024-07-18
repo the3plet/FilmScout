@@ -17,4 +17,8 @@ export class ApiService {
   get<T>(url: string,params:Pagination): Observable<T> {
     return this.httpClient.get<T>(url, {headers:this.headers}) as Observable<T>;
   }
+
+  post<T,U>(url:string,body:U):Observable<T>{
+    return this.httpClient.post<T>(url,body,{headers:this.headers}) as Observable<T>
+  }
 }

@@ -61,5 +61,10 @@ export interface Pagination {
     | boolean
     | ReadonlyArray<string | number | boolean>;
   page: number;
-  
+}
+
+export interface Rating {
+  success: boolean;
+  status_code: number;
+  status_message: string;
 }

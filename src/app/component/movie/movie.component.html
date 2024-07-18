@@ -1,12 +1,16 @@
-
-  <div class="p-8 w-fit h-fit flex flex-col items-center justify-center ">
-    <img [src]="getImageUrl(movies.poster_path)" class="rounded-2xl hover:border-4 hover:border-white" />
+<div class="flex-col">
+  <div class="m-8 mb-0 w-[200px] h-fit flex flex-col">
+    <img
+      [src]="getImageUrl(movies.poster_path)"
+      class="rounded-2xl hover:border-4 hover:border-white"
+    />
     <div>
-      <p class="text-white max-w-[200px] text-center p-1">
+      <p class="text-white text-center p-2">
         {{
           movies.original_name ? movies.original_name : movies.original_title
         }}
       </p>
     </div>
   </div>
-
+  
+</div>
