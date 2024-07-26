@@ -1,44 +1,46 @@
-<div *ngIf="listOfMovies.length !== 0; else noData">
-  <div class="no-scrollbar flex overflow-x-auto">
-    <app-cover
-      *ngFor="let cover of listOfMovies"
-      [cover]="cover"
-      class=""
-      (click)="handleClick(cover)"
-    >
-    </app-cover>
-  </div>
-  <h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
-    Upcoming Movies
-  </h1>
-  <div class="no-scrollbar flex overflow-x-auto">
-    <app-movie
-      *ngFor="let movies of upcomingMovies"
-      [movies]="movies"
-      (click)="handleClick(movies)"
-    ></app-movie>
-  </div>
-  <h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
-    Series Airing Today
-  </h1>
-  <div class="no-scrollbar flex overflow-x-auto">
-    <app-movie
-      *ngFor="let series of upcomingSeries"
-      [movies]="series"
-      (click)="handleClick(series)"
-    ></app-movie>
-  </div>
-</div>
+<app-loader *ngIf="isLoader" [isloading]="isLoader"></app-loader>
 
-<ng-template #noData>
-  <div class="h-full flex items-center">
-    <p class="text-white p-4 flex text-lg font-mono text-center">
-      Currently we are experiencing some technical difficulties
+<div *ngIf="!isLoader" class="h-full">
+  <div *ngIf="listOfMovies.length !== 0; else noData">
+    <div class="no-scrollbar flex overflow-x-auto">
+      <app-cover
+        *ngFor="let cover of listOfMovies"
+        [cover]="cover"
+        (click)="handleClick(cover)"
+      ></app-cover>
+    </div>
+    <h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
+      Upcoming Movies
+    </h1>
+    <div class="no-scrollbar flex overflow-x-auto">
+      <app-movie
+        *ngFor="let movies of upcomingMovies"
+        [movies]="movies"
+        (click)="handleClick(movies)"
+      ></app-movie>
+    </div>
+    <h1 class="text-white flex justify-center text-2xl font-h1-main pt-4">
+      Series Airing Today
+    </h1>
+    <div class="no-scrollbar flex overflow-x-auto">
+      <app-movie
+        *ngFor="let series of upcomingSeries"
+        [movies]="series"
+        (click)="handleClick(series)"
+      ></app-movie>
+    </div>
+    <p
+      class="lg:flex hidden text-white justify-center opacity-45 font-mono text-sm"
+    >
+      use shift + scroll to scroll through the list of movies
     </p>
   </div>
-</ng-template>
-<p
-  class="lg:flex hidden text-white justify-center opacity-45 font-mono text-sm"
->
-  use shift + scroll to scroll through the list of movies
-</p>
+  
+  <ng-template #noData>
+    <div class="h-full flex items-center justify-center">
+      <p class="text-white p-4 flex text-lg font-mono text-center">
+        Currently we are experiencing some technical difficulties
+      </p>
+    </div>
+  </ng-template>
+</div>

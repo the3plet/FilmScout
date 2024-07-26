@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieDetails } from '../../../types';
 import { MoviesService } from '../../services/movies.service';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-movie-details',
@@ -16,7 +17,7 @@ import { CommonModule } from '@angular/common';
 export class MovieDetailsComponent implements OnInit {
   movieId: string | null = null;
   movieDetails: MovieDetails | null = null;
-  private imageUrlBase = 'https://image.tmdb.org/t/p/original';
+  private imageUrlBase = `${environment.imageUrl}/original`;
   
   constructor(private route: ActivatedRoute, private movieService: MoviesService) {}
 

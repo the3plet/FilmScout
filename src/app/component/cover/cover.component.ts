@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Movies } from '../../../types';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-cover',
@@ -9,7 +10,7 @@ import { Movies } from '../../../types';
   styleUrl: './cover.component.scss'
 })
 export class CoverComponent {
-  private imageUrlBase = 'https://image.tmdb.org/t/p/original';
+  private imageUrlBase = `${environment.imageUrl}original`;
   @Input() cover!: Movies;
 
   getImageUrl(path: string): string {
