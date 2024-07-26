@@ -1,7 +1,10 @@
+
 <app-loader *ngIf="isLoader" [isloading]="isLoader"></app-loader>
 
-<div *ngIf="!isLoader" class="h-full">
+<div *ngIf="!isLoader">
   <div *ngIf="listOfMovies.length !== 0; else noData">
+    <div class="h-full">
+
     <div class="no-scrollbar flex overflow-x-auto">
       <app-cover
         *ngFor="let cover of listOfMovies"
@@ -29,6 +32,8 @@
         (click)="handleClick(series)"
       ></app-movie>
     </div>
+  </div>
+
     <p
       class="lg:flex hidden text-white justify-center opacity-45 font-mono text-sm"
     >
@@ -44,3 +49,4 @@
     </div>
   </ng-template>
 </div>
+
