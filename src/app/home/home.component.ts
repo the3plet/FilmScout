@@ -5,6 +5,7 @@ import { MovieComponent } from '../component/movie/movie.component';
 import { CommonModule } from '@angular/common';
 import { CoverComponent } from '../component/cover/cover.component';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environments';
 
 @Component({
   selector: 'app-home',
@@ -21,22 +22,32 @@ export class HomeComponent {
   movieId:number|null=null;
   ngOnInit() {
     this.movieService
-      .getMovies('https://api.themoviedb.org/3/trending/all/day', { page: 1 })
-      .subscribe((movies: MovieResponse) => {
-        this.listOfMovies = movies.results;
-        console.log(movies);
-      });
+      .getMovies(`${environment.apiUrl}/trending/all/day`, { page: 1 })
+      .subscribe({
+        next:((movies: MovieResponse) => {
+          this.listOfMovies = movies.results;
+          console.log(movies);
+        }),
+        error:((err)=>console.log(err))
+      })
 
     this.movieService
-      .getMovies('https://api.themoviedb.org/3/movie/upcoming', { page: 1 })
-      .subscribe((movies: MovieResponse) => {
-        this.upcomingMovies = movies.results;
-      });
+      .getMovies(`${environment.apiUrl}/movie/upcoming`, { page: 1 })
+      .subscribe({
+        next:((movies: MovieResponse) => {
+          this.upcomingMovies = movies.results;
+        }),
+        error:((err)=>console.log(err))
+      })
     this.movieService
-      .getMovies('https://api.themoviedb.org/3/tv/airing_today', { page: 1 })
-      .subscribe((movies: MovieResponse) => {
-        this.upcomingSeries = movies.results;
-      });
+      .getMovies(`${environment.apiUrl}/tv/airing_today`, { page: 1 })
+      .subscribe({
+        next:((movies: MovieResponse)=>{
+
+          this.upcomingSeries = movies.results;
+        }),
+        error:((err)=>console.log(err))
+      })
 
     }
     handleClick(movie: Movies) {
